@@ -455,9 +455,7 @@ EPUBJS.core.getElementSelector = function (element) {
 };
 
 EPUBJS.core.getElementSelectorPath = function(element) {
-	var path = [],
-		isXhtml = (element.ownerDocument.documentElement.getAttribute('xmlns') === 'http://www.w3.org/1999/xhtml'),
-		index, nodeName, tagName, pathIndex;
+	var path = [], index, nodeName;
 	
 	if (element.nodeType === Node.TEXT_NODE) {
 		index = EPUBJS.core.indexOfTextNode(element) + 1;
@@ -476,7 +474,7 @@ EPUBJS.core.getElementSelectorPath = function(element) {
 		}
 		nodeName = element.nodeName.toLowerCase();
 		if (index !== 0) {
-			nodeName += ':nth-of-type(' + index + ')';
+			nodeName += ':nth-of-type(' + (index + 1) + ')';
 		}
 		path.unshift(nodeName);
 	}

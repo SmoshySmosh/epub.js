@@ -266,7 +266,9 @@ EPUBJS.EpubCFI.prototype.removeMarker = function(marker, _doc) {
 		marker.parentNode.removeChild(marker);
 	} else if(marker.classList.contains("EPUBJS-CFI-MARKER")) {
 		// Remove only elements added as markers
-		marker.parentNode.removeChild(marker);
+		if (marker.parentNode) {
+			marker.parentNode.removeChild(marker);
+		}
 	}
 
 };

@@ -193,11 +193,9 @@ EPUBJS.Render.Iframe.prototype.getPageNumberByElement = function(element) {
 		return;
 	}
 
-	leftPosition = element.getBoundingClientRect();
-
-	leftPosition = this.leftPos + leftPosition.left; //-- Calculate left offset compaired to scrolled position
+	leftPosition = this.leftPos + element.getBoundingClientRect().left; //-- Calculate left offset compaired to scrolled position
 	
-	pg = Math.floor(left / this.pageWidth) + 1; //-- pages start at 1
+	pg = Math.floor(leftPosition / this.pageWidth) + 1; //-- pages start at 1
 	
 	return pg;
 };
