@@ -25,7 +25,7 @@
                 EPUBJS.cssPath = "css/";
                 // fileStorage.filePath = EPUBJS.filePath;
 
-                window.Reader = ePubReader("moby-dick/", { reload: true, generatePagination: false });
+                window.Reader = ePubReader("/books/ng-book-23.epub", { reload: true, generatePagination: false });
               }  
             };
         
@@ -58,10 +58,10 @@
         <script src="../src/pagination.js"></script>
         
         <!-- Hooks -->
-        <script async src="../hooks/default/transculsions.js"></script>
-        <script async src="../hooks/default/endnotes.js"></script>
-        <script async src="../hooks/default/smartimages.js"></script>
-        <script async src="../hooks/default/mathml.js"></script>
+        <script src="../hooks/default/transculsions.js"></script>
+        <script src="../hooks/default/endnotes.js"></script>
+        <script src="../hooks/default/smartimages.js"></script>
+        <script src="../hooks/default/mathml.js"></script>
         
         <!-- Reader -->
         <script src="../reader_src/reader.js"></script>
@@ -79,7 +79,7 @@
         
         <!-- Highlights -->
         <script src="js/libs/jquery.highlight.js"></script>
-        <script async src="../hooks/extensions/highlight.js"></script>
+        <script src="../hooks/extensions/highlight.js"></script>
         
         <!-- Plugins -->
         <script src="../reader_src/plugins/search.js"></script>
@@ -147,7 +147,7 @@
                     <input type='radio' name='fontSize' value='medium'><span class='medium'>Medium</span><br>
                     <input type='radio' name='fontSize' value='large'><span class='large'>Large</span><br>
                     <input type='radio' name='fontSize' value='x-large'><span class='xlarge'>Extra Large</span> -->
-                    <input type="checkbox" id="sidebarReflow" name="sidebarReflow">Reflow text when sidebars are open.</input>
+                    <input type="checkbox" id="sidebarReflow" name="sidebarReflow" /> Reflow text when sidebars are open.
                   </p>
               </div>
               <div class="closer icon-cancel-circled"></div>

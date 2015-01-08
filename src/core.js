@@ -446,6 +446,43 @@ EPUBJS.core.queue = function(_scope){
 	};
 };
 
+EPUBJS.core.getElementSelector = function (element) {
+	if (element && element.id) {
+		return '#' + element.id;
+	} else {
+		return EPUBJS.core.getElementSelectorPath(element);
+	}
+};
+
+EPUBJS.core.getElementSelectorPath = function(element) {
+	var path = [],
+		isXhtml = (element.ownerDocument.documentElement.getAttribute('xmlns') === 'http://www.w3.org/1999/xhtml'),
+		index, nodeName, tagName, pathIndex;
+	
+	if (element.nodeType === Node.TEXT_NODE) {
+		index = EPUBJS.core.indexOfTextNode(element) + 1;
+		//path.push(':nth-of-type(' + index + ')');
+		element = element.parentNode;
+	}
+
+	for (; element && element.nodeType == 1; element = element.parentNode) {
+		index = 0;
+		for (var sibling = element.previousSibling; sibling; sibling = sibling.previousSibling) {
+			if (sibling.nodeType === Node.DOCUMENT_TYPE_NODE) {
+				continue;
+			} else if (sibling.nodeName === element.nodeName) {
+				++index;
+			}
+		}
+		nodeName = element.nodeName.toLowerCase();
+		if (index !== 0) {
+			nodeName += ':nth-of-type(' + index + ')';
+		}
+		path.unshift(nodeName);
+	}
+	return path.join(' > ').replace(' > :', ':');
+};
+
 // From: https://code.google.com/p/fbug/source/browse/branches/firebug1.10/content/firebug/lib/xpath.js
 /**
  * Gets an XPath for an element which describes its hierarchical location.

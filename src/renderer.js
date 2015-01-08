@@ -714,7 +714,7 @@ EPUBJS.Renderer.prototype.indexOfBreakableChar = function (text, startPosition) 
 	// '-' \x2D
 	// ' ' \x20
 	
-	if (! startPosition) {
+	if (!startPosition) {
 		startPosition = 0;
 	}
 	
@@ -774,7 +774,6 @@ EPUBJS.Renderer.prototype.splitTextNodeIntoWordsRanges = function(node){
 		range.setEnd(node, text.length);
 		ranges.push(range);
 	}
-
 	return ranges;
 };
 

@@ -187,11 +187,15 @@ EPUBJS.Render.Iframe.prototype.page = function(pg){
 };
 
 //-- Show the page containing an Element
-EPUBJS.Render.Iframe.prototype.getPageNumberByElement = function(el){
-	var left, pg;
-	if(!el) return;
+EPUBJS.Render.Iframe.prototype.getPageNumberByElement = function(element) {
+	var leftPosition, pageNumber;
+	if (!element) {
+		return;
+	}
 
-	left = this.leftPos + el.getBoundingClientRect().left; //-- Calculate left offset compaired to scrolled position
+	leftPosition = element.getBoundingClientRect();
+
+	leftPosition = this.leftPos + leftPosition.left; //-- Calculate left offset compaired to scrolled position
 	
 	pg = Math.floor(left / this.pageWidth) + 1; //-- pages start at 1
 	
